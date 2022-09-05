@@ -1,19 +1,13 @@
 import { v4 as uuidv4 } from "uuid"
 
-import { Avatar, Grid, Paper, Typography } from "@mui/material"
+import { Grid, Paper } from "@mui/material"
 
 import Navbar from "../../components/navbar"
 import Sidebar from "../../components/sidebar"
 import LayoutContainer from "../../components/layoutContainer"
 
 import { getDatabase, ref, get, child, set } from "firebase/database";
-import { Box, useTheme } from "@mui/system"
-import { styled } from '@mui/material/styles'
-
-import MoneyIcon from "@mui/icons-material/Money"
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined"
-import InsertChartOutlinedIcon from "@mui/icons-material/InsertChartOutlined"
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney"
+import { Box } from "@mui/system"
 
 import {
   Chart as ChartJS,
@@ -26,31 +20,11 @@ import {
 } from 'chart.js'
 
 import { Bar } from "react-chartjs-2"
+import ResumeDash from "../../components/resumeDash"
 
-const ItemPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(6),
-  fontWeight: 'bold'
-}))
-
-const TypTitle = styled('h5')(({ theme }) => ({
-  ...theme.typography.button,
-  color: '#65748B',
-  fontSize: '0.75rem',
-  fontWeight: 600,
-  letterSpacing: '0.5px',
-  lineHeight: 2.5,
-  textTransform: 'uppercase'
-}))
-
-const TypInfo = styled(Typography)(({ theme }) => ({
-  color: '#121828',
-  fontWeight: 700,
-  fontSize: '2rem'
-}))
 
 export default function Home() {
 
-  const theme = useTheme()
 
   const db = getDatabase()
 
@@ -123,75 +97,22 @@ export default function Home() {
 
   readDataDB()*/
   
+ 
 
   return (
     <>
-      <Sidebar />
-      
+      <Sidebar />      
       <Navbar />
 
       <LayoutContainer>
-        <Grid container spacing={2} >
-          <Grid item xs={3}>
-              <ItemPaper elevation={1}>
-                <Grid container spacing={4}>
-                  <Grid item>
-                    <TypTitle>RECEITA</TypTitle>
-                    <TypInfo>R$24k</TypInfo>
-                    </Grid>
-                    <Grid item>
-                      <Avatar sx={{ bgcolor: '#D14343', width: 56, height: 56 }}><MoneyIcon /></Avatar>
-                    </Grid>
-                  </Grid>
-              </ItemPaper>
-          </Grid>
-          <Grid item xs={3}>
-            <ItemPaper elevation={1}>
-              <Grid container spacing={4}>
-                  <Grid item>
-                    <TypTitle>TOTAL DE CLIENTES</TypTitle>
-                    <TypInfo>1,6K</TypInfo>
-                  </Grid>
-                  <Grid item>
-                    <Avatar sx={{ bgcolor: '#14B8A6', width: 56, height: 56 }}><PeopleOutlinedIcon /></Avatar>
-                  </Grid>
-              </Grid>
-            </ItemPaper>
-          </Grid>
 
-          <Grid item xs={3}>
-            <ItemPaper elevation={1}>
-              <Grid container spacing={4}>
-                <Grid item>
-                  <TypTitle>PROGRESSO DA META</TypTitle>
-                  <TypInfo>75.5%</TypInfo>
-                </Grid>
-                <Grid item>
-                  <Avatar sx={{ bgcolor: '#FFB020', width: 56, height: 56 }}><InsertChartOutlinedIcon /></Avatar>
-                </Grid>
-              </Grid>
-            </ItemPaper>
-          </Grid>
-          <Grid item xs={3}>
-            <ItemPaper elevation={1}>
-              <Grid container spacing={4}>
-                <Grid item>
-                  <TypTitle>LUCRO</TypTitle>
-                  <TypInfo>R$23K</TypInfo>
-                </Grid>
-                <Grid item>
-                  <Avatar sx={{ bgcolor: '#5048E5', width: 56, height: 56 }}><AttachMoneyIcon /></Avatar>
-                </Grid>
-              </Grid>
-            </ItemPaper>
-          </Grid>
-        </Grid>
+        <ResumeDash />
       
-          <Grid item xs={1}>
-            <Box width={700}>
-              <Paper elevation={1}><Bar options={options} data={data} /></Paper>
-            </Box>
-          </Grid>    
+        <Grid item xs={1}>
+          <Box width={700}>
+            <Paper elevation={1}><Bar options={options} data={data} /></Paper>
+          </Box>
+        </Grid> 
       
       </LayoutContainer>
 

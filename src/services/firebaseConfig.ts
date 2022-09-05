@@ -1,14 +1,14 @@
 import { initializeApp } from "firebase/app"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBjgeh5fOYIaG5LcXwagC0UiCGzzeGl4Wk",
-  authDomain: "pedidoapi-9a3d8.firebaseapp.com",
-  projectId: "pedidoapi-9a3d8",
-  storageBucket: "pedidoapi-9a3d8.appspot.com",
-  messagingSenderId: "1098362325570",
-  appId: "1:1098362325570:web:367e2f14d663189d727bdb",
-  measurementId: "G-LYHL94RKRE",
-  databaseURL: "https://pedidoapi-9a3d8-default-rtdb.firebaseio.com"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL
 }
 
 export const app = initializeApp(firebaseConfig)

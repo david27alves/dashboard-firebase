@@ -13,7 +13,7 @@ interface User {
 
 function ContextAuthSignIn({ children }: {children: React.ReactNode}) {
 
-    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+    const { enqueueSnackbar } = useSnackbar();
 
     const auth = getAuth(app)
     const [user, setUser] = useState<User | null | string>(null)
@@ -22,8 +22,7 @@ function ContextAuthSignIn({ children }: {children: React.ReactNode}) {
 
         const loadStoreAuth = () => {
 
-            const sessionUser = sessionStorage.getItem("UserAuth")
-
+            const sessionUser = sessionStorage.getItem("@UserAuth")
             if (sessionUser) {
                 setUser(sessionUser)
             }
@@ -38,8 +37,7 @@ function ContextAuthSignIn({ children }: {children: React.ReactNode}) {
         
         signInWithEmailAndPassword(auth, email, pass)
             .then((userCredential) => {
-                const user = userCredential.user
-                setUser(user)
+                setUser(userCredential.user)
                 sessionStorage.setItem("@UserAuth", JSON.stringify(user))
             })
             .catch((error) => {
